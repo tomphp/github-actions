@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.4.1](https://github.com/tomphp/github-actions/compare/v0.4.0..v0.4.1) - 2023-10-23
+#### Bug Fixes
+- **(determine-release-url)** Fix url output - ([a542241](https://github.com/tomphp/github-actions/commit/a542241bee5a1833b2eb134cdad58e72cc4c9dcd)) - Tom Oram
+
+- - -
+
 ## [v0.4.0](https://github.com/tomphp/github-actions/compare/v0.3.0..v0.4.0) - 2023-10-23
 #### Features
 - **(determine-release-url)** Add determine-release-url - ([a509f63](https://github.com/tomphp/github-actions/commit/a509f633c37865ad66dcdbe56b5f5c34b267925a)) - Tom Oram
