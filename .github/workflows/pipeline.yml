@@ -7,8 +7,12 @@ permissions:
   contents: write
 
 jobs:    
+  test-checkout-rust-project:
+    uses: ./.github/workflows/test-checkout-rust-project.yml
+
   all-tests-succeeded:
-    needs: []
+    needs:
+      - test-checkout-rust-project
     runs-on: ubuntu-latest
     steps:
       - run: echo OK

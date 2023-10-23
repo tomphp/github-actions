@@ -1,0 +1,23 @@
+on:
+  workflow_call:
+
+jobs:
+  test-with-default-arguments:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./checkout-rust-project
+      - name: Assert project is checked out
+        run: grep "# GitHub Actions" README.md
+      - name: Assert version is not nightly
+        run: rustc --version | grep -v nightly
+
+  test-with-clippy-component-installed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./checkout-rust-project
+        with:
+          rust-components: clippy
+      - name: Assert clippy is installed
+        run: cargo clippy --version
