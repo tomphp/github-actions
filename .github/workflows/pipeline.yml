@@ -16,11 +16,15 @@ jobs:
   test-determine-release-url:
     uses: ./.github/workflows/test-determine-release-url.yml
 
+  test-install-release-binary:
+    uses: ./.github/workflows/test-install-release-binary.yml
+
   all-tests-succeeded:
     needs:
       - test-checkout-rust-project
       - test-determine-binary-name
       - test-determine-release-url
+      - test-install-release-binary
     runs-on: ubuntu-latest
     steps:
       - run: echo OK

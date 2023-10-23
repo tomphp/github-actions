@@ -1,0 +1,76 @@
+name: Install Release Binary
+description: Download a binary attached to a GitHub Release and add it to the path
+
+inputs:
+  owner:
+    description: The GitHub user or organisation hosting the repository
+    required: true
+  repository:
+    description: The name of the repository
+    required: true
+  binary-name:
+    description: The name of the binary you want to download
+    required: true
+  windows-suffix:
+    description: The suffix to add to Windows binaries
+    required: false
+    default: x86_64-pc-windows-msvc
+  linux-suffix:
+    description: The suffix to add to Linux binaries
+    required: false
+    default: x86_64-unknown-linux-gnu
+  macos-suffix:
+    description: The suffix to add to Linux binaries
+    required: false
+    default: x86_64-apple-darwin
+  version:
+    description: The required release version
+    required: false
+    default: latest
+
+runs:
+  using: composite
+  steps:
+    - name: Determin Binary Name
+      id: get-binary-name
+      uses: tomphp/github-actions/determine-binary-name@v0.4.1
+      with:
+        name: ${{ inputs.binary-name }}
+        windows-suffix: ${{ inputs.windows-suffix }}
+        linux-suffix: ${{ inputs.linux-suffix }}
+        macos-suffix: ${{ inputs.macos-suffix }}
+
+    - name: Determine Release URL
+      id: get-release-url
+      uses: tomphp/github-actions/determine-release-url@v0.4.1
+      with:
+        owner: ${{ inputs.owner }}
+        repository: ${{ inputs.repository }}
+        version: ${{ inputs.version }}
+        binary-name: ${{ inputs.binary-name }}
+        windows-suffix: ${{ inputs.windows-suffix }}
+        linux-suffix: ${{ inputs.linux-suffix }}
+        macos-suffix: ${{ inputs.macos-suffix }}
+
+    - name: Install Binary
+      id: install
+      env:
+        BIN_FOLDER: ${{ inputs.binary-name }}-bin
+        SOURCE_URL: ${{ steps.get-release-url.outputs.url }}
+        TARGET_FILE: ${{ steps.get-binary-name.outputs.name }}
+        GITHUB_TOKEN: ${{ github.token }}
+        GITHUB_ACTOR: ${{ github.actor }}
+      run: |
+        set -euo pipefail
+
+        BIN_FOLDER="$RUNNER_TEMP/$BIN_FOLDER"
+
+        mkdir -p "$BIN_FOLDER"
+        curl -u "$GITHUB_ACTOR:$GITHUB_TOKEN" -Lo "$BIN_FOLDER/$TARGET_FILE" "$SOURCE_URL"
+        chmod +x "$BIN_FOLDER/$TARGET_FILE"
+
+        echo "Installed in $BIN_FOLDER/$TARGET_FILE"
+        sum "$BIN_FOLDER/$TARGET_FILE"
+
+        echo "$BIN_FOLDER/" >> "$GITHUB_PATH"
+      shell: bash
