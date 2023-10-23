@@ -1,0 +1,85 @@
+on:
+  workflow_call:
+
+jobs:
+  test-with-default-arguments:
+    strategy:
+      matrix:
+        os:
+          - image: ubuntu-latest
+            expected-name: my-binary
+            expected-name-with-arch: my-binary-x86_64-unknown-linux-gnu
+            expected-suffix: x86_64-unknown-linux-gnu
+          - image: windows-latest
+            expected-name: my-binary.exe
+            expected-name-with-arch: my-binary-x86_64-pc-windows-msvc.exe
+            expected-suffix: x86_64-pc-windows-msvc
+          - image: macos-latest
+            expected-name: my-binary
+            expected-name-with-arch: my-binary-x86_64-apple-darwin
+            expected-suffix: x86_64-apple-darwin
+    runs-on: ${{ matrix.os.image }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./determine-binary-name
+        id: run-action
+        with:
+          name: my-binary
+      - uses: armakuni/github-actions/assert-equals@v0.18.1
+        name: Check name
+        with:
+          expected: ${{ matrix.os.expected-name }}
+          actual: ${{ steps.run-action.outputs.name }}
+      - uses: armakuni/github-actions/assert-equals@v0.18.1
+        name: Check name-with-arch
+        with:
+          expected: ${{ matrix.os.expected-name-with-arch }}
+          actual: ${{ steps.run-action.outputs.name-with-arch }}
+      - uses: armakuni/github-actions/assert-equals@v0.18.1
+        name: Check suffix
+        with:
+          expected: ${{ matrix.os.expected-suffix }}
+          actual: ${{ steps.run-action.outputs.suffix }}
+
+
+  test-with-arguments:
+    strategy:
+      matrix:
+        os:
+          - image: ubuntu-latest
+            expected-name: program
+            expected-name-with-arch: program-linux
+            expected-suffix: linux
+          - image: windows-latest
+            expected-name: program.exe
+            expected-name-with-arch: program-windows.exe
+            expected-suffix: windows
+          - image: macos-latest
+            expected-name: program
+            expected-name-with-arch: program-macos
+            expected-suffix: macos
+    runs-on: ${{ matrix.os.image }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./determine-binary-name
+        id: run-action
+        with:
+          name: program
+          linux-suffix: linux
+          windows-suffix: windows
+          macos-suffix: macos
+      - uses: armakuni/github-actions/assert-equals@v0.18.1
+        name: Check name
+        with:
+          expected: ${{ matrix.os.expected-name }}
+          actual: ${{ steps.run-action.outputs.name }}
+      - uses: armakuni/github-actions/assert-equals@v0.18.1
+        name: Check name-with-arch
+        with:
+          expected: ${{ matrix.os.expected-name-with-arch }}
+          actual: ${{ steps.run-action.outputs.name-with-arch }}
+      - uses: armakuni/github-actions/assert-equals@v0.18.1
+        name: Check suffix
+        with:
+          expected: ${{ matrix.os.expected-suffix }}
+          actual: ${{ steps.run-action.outputs.suffix }}

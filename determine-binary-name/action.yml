@@ -1,0 +1,65 @@
+name: Determine Binary Name
+description: Adds the appropriate OS specific suffix on to a binary name so that it can be uploaded to a release.
+
+inputs:
+  name:
+    description: The name of the binary
+    required: true
+  windows-suffix:
+    description: The suffix to add to Windows binaries
+    required: false
+    default: x86_64-pc-windows-msvc
+  linux-suffix:
+    description: The suffix to add to Linux binaries
+    required: false
+    default: x86_64-unknown-linux-gnu
+  macos-suffix:
+    description: The suffix to add to Linux binaries
+    required: false
+    default: x86_64-apple-darwin
+
+outputs:
+  name:
+    description: The real name of the binary
+    value: ${{ steps.get-binary-name.outputs.name }}
+  name-with-arch:
+    description: The name with the architecture suffix
+    value: ${{ steps.get-binary-name.outputs.name-with-arch }}
+  suffix:
+    description: The chosen suffix
+    value: ${{ steps.get-binary-name.outputs.suffix }}
+
+runs:
+  using: composite
+  steps:
+    - name: Determine Binary Name
+      id: get-binary-name
+      env:
+        FILENAME: ${{ inputs.name }}
+        WINDOWS_SUFFIX: ${{ inputs.windows-suffix }}
+        LINUX_SUFFIX: ${{ inputs.linux-suffix }}
+        MACOS_SUFFIX: ${{ inputs.macos-suffix }}
+      run: |
+        set -euo pipefail
+
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          suffix="$LINUX_SUFFIX"
+          target_file="$FILENAME"
+          source_file="$FILENAME-$suffix"
+        elif [ "$RUNNER_OS" == "Windows" ]; then
+          suffix="$WINDOWS_SUFFIX"
+          target_file="$FILENAME.exe"
+          source_file="$FILENAME-$suffix.exe"
+        elif [ "$RUNNER_OS" == "macOS" ]; then
+          suffix="$MACOS_SUFFIX"
+          target_file="$FILENAME"
+          source_file="$FILENAME-$suffix"
+        else
+          echo "$RUNNER_OS not supported"
+          exit 1
+        fi
+        
+        echo "name-with-arch=$source_file" >> "$GITHUB_OUTPUT"
+        echo "name=$target_file" >> "$GITHUB_OUTPUT"
+        echo "suffix=$suffix" >> "$GITHUB_OUTPUT"
+      shell: bash

@@ -10,9 +10,13 @@ jobs:
   test-checkout-rust-project:
     uses: ./.github/workflows/test-checkout-rust-project.yml
 
+  test-determine-binary-name:
+    uses: ./.github/workflows/test-determine-binary-name.yml
+
   all-tests-succeeded:
     needs:
       - test-checkout-rust-project
+      - test-determine-binary-name
     runs-on: ubuntu-latest
     steps:
       - run: echo OK
