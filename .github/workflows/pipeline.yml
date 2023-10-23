@@ -3,6 +3,9 @@ on:
     branches: ["*"]
   pull_request:
 
+permissions:
+  contents: write
+
 jobs:    
   all-tests-succeeded:
     needs: []
