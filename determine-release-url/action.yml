@@ -1,0 +1,76 @@
+name: Determine Release URL
+description: Get the URL for a binary attached to a GitHub release
+
+inputs:
+  owner:
+    description: The GitHub user or organisation hosting the repository
+    required: true
+  repository:
+    description: The name of the repository
+    required: true
+  binary-name:
+    description: The name of the binary you want to download
+    required: true
+  windows-suffix:
+    description: The suffix to add to Windows binaries
+    required: false
+    default: x86_64-pc-windows-msvc
+  linux-suffix:
+    description: The suffix to add to Linux binaries
+    required: false
+    default: x86_64-unknown-linux-gnu
+  macos-suffix:
+    description: The suffix to add to Linux binaries
+    required: false
+    default: x86_64-apple-darwin
+  version:
+    description: The required release version
+    required: false
+    default: latest
+
+outputs:
+  url:
+    description: The URL to download the binary from
+    value: ${{ get-binary-name.outputs.name }}
+
+runs:
+  using: composite
+  steps:
+    - name: Determin Binary Name
+      id: get-binary-name
+      uses: tomphp/github-actions/determine-binary-name@v0.3.0
+      with:
+        name: ${{ inputs.binary-name }}
+        version: ${{ inputs.version }}
+        windows-suffix: ${{ inputs.windows-suffix }}
+        linux-suffix: ${{ inputs.linux-suffix }}
+        macos-suffix: ${{ inputs.macos-suffix }}
+
+    - name: Determine Release Base URL
+      id: get-base-url
+      env:
+        INSTALL_VERSION: ${{ inputs.version }}
+        OWNER: ${{ steps.define-source.outputs.owner }}
+        REPOSITORY: ${{ steps.define-source.outputs.repository }}
+      run: |
+        set -euo pipefail
+
+        if [ "$INSTALL_VERSION" == "latest" ]; then
+            url="https://github.com/$OWNER/$REPOSITORY/releases/latest/download/"
+        else
+            url="https://github.com/$OWNER/$REPOSITORY/releases/download/v$INSTALL_VERSION/"
+        fi
+
+        echo "url=$url" >> "$GITHUB_OUTPUT"
+      shell: bash
+
+    - name: Create URL
+      id: create-url
+      env:
+        BASE_URL: ${{ steps.get-base-url.outputs.url }}
+        FILE_NAME: ${{ steps.get-binary-name.outputs.name-with-arch }}
+      run: |
+        set -euo pipefail
+        
+        echo "url=$BASE_URL/$FILE_NAME"
+      shell: bash
