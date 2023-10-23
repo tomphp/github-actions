@@ -6,7 +6,10 @@ on:
 permissions:
   contents: write
 
-jobs:    
+jobs:
+  check-conventional-commits:
+    uses: armakuni/github-actions/.github/workflows/check-conventional-commits.yml@v0.18.1
+
   test-checkout-rust-project:
     uses: ./.github/workflows/test-checkout-rust-project.yml
 
@@ -21,6 +24,7 @@ jobs:
 
   all-tests-succeeded:
     needs:
+      - check-conventional-commits
       - test-checkout-rust-project
       - test-determine-binary-name
       - test-determine-release-url
