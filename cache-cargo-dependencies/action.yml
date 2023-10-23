@@ -1,0 +1,16 @@
+name: Cache cargo dependency directories
+description: A simple wrapper around actions/cache configured with common Cargo directories
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/cache@v3.3.2
+      name: Cache cargo dependencies
+      with:
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        path: |
+          .cache
+          ~/.cargo/registry
+          ~/.cargo/git
+          ~/.cargo/bin
+          target
