@@ -18,9 +18,9 @@ jobs:
       - uses: ./determine-release-url
         id: run-action
         with:
-          name: my-binary
+          binary-name: my-binary
           owner: example-org
-          respoitory: example-app
+          repository: example-app
       - uses: armakuni/github-actions/assert-equals@v0.18.1
         name: Check url
         with:
@@ -32,20 +32,20 @@ jobs:
       matrix:
         os:
           - image: ubuntu-latest
-            expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-x86_64-unknown-linux-gnu
+            expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-linux
           - image: windows-latest
-            expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-x86_64-pc-windows-msvc.exe
+            expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-windows.exe
           - image: macos-latest
-            expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-x86_64-apple-darwin
+            expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-macos
     runs-on: ${{ matrix.os.image }}
     steps:
       - uses: actions/checkout@v4
       - uses: ./determine-release-url
         id: run-action
         with:
-          name: program
+          binary-name: program
           owner: demo-org
-          respoitory: demo-app
+          repository: demo-app
           linux-suffix: linux
           windows-suffix: windows
           macos-suffix: macos

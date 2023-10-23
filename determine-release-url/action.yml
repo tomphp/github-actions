@@ -31,7 +31,7 @@ inputs:
 outputs:
   url:
     description: The URL to download the binary from
-    value: ${{ get-binary-name.outputs.name }}
+    value: ${{ steps.create-url.outputs.url }}
 
 runs:
   using: composite
@@ -41,7 +41,6 @@ runs:
       uses: tomphp/github-actions/determine-binary-name@v0.3.0
       with:
         name: ${{ inputs.binary-name }}
-        version: ${{ inputs.version }}
         windows-suffix: ${{ inputs.windows-suffix }}
         linux-suffix: ${{ inputs.linux-suffix }}
         macos-suffix: ${{ inputs.macos-suffix }}
@@ -50,8 +49,8 @@ runs:
       id: get-base-url
       env:
         INSTALL_VERSION: ${{ inputs.version }}
-        OWNER: ${{ steps.define-source.outputs.owner }}
-        REPOSITORY: ${{ steps.define-source.outputs.repository }}
+        OWNER: ${{ inputs.owner }}
+        REPOSITORY: ${{ inputs.repository }}
       run: |
         set -euo pipefail
 
@@ -72,5 +71,5 @@ runs:
       run: |
         set -euo pipefail
         
-        echo "url=$BASE_URL/$FILE_NAME"
+        echo "url=$BASE_URL$FILE_NAME" >> "$GITHUB_OUTPUT"
       shell: bash

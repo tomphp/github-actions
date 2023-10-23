@@ -13,10 +13,14 @@ jobs:
   test-determine-binary-name:
     uses: ./.github/workflows/test-determine-binary-name.yml
 
+  test-determine-release-url:
+    uses: ./.github/workflows/test-determine-release-url.yml
+
   all-tests-succeeded:
     needs:
       - test-checkout-rust-project
       - test-determine-binary-name
+      - test-determine-release-url
     runs-on: ubuntu-latest
     steps:
       - run: echo OK
