@@ -1,0 +1,17 @@
+pull_request_rules:
+  - name: Dependabot
+    conditions:
+      - author=dependabot[bot]
+      - check-success=all-tests-succeeded
+    actions:
+      queue:
+        method: merge
+        name: dependabot
+
+queue_rules:
+  - name: dependabot
+    batch_size: 10
+    batch_max_wait_time: 30 min
+    queue_conditions:
+      - author=dependabot[bot]
+      - check-success=all-tests-succeeded
