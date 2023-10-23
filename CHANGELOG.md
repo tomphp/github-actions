@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.2.0](https://github.com/tomphp/github-actions/compare/v0.1.0..v0.2.0) - 2023-10-23
+#### Features
+- **(checkout-rust-project)** Add checkout-rust-project - ([a707276](https://github.com/tomphp/github-actions/commit/a707276d6f5249ab8e95164fe525263c8bcf36f5)) - Tom Oram
+
+- - -
+
 ## [v0.1.0](https://github.com/tomphp/github-actions/compare/28d9d0aebb426d0c8a21bc3e3e4904ffadb7ef50..v0.1.0) - 2023-10-23
 #### Continuous Integration
 - Add contents write permissions - ([6373fc7](https://github.com/tomphp/github-actions/commit/6373fc71d731f64eba8bd80ff5dc0f102d889d55)) - Tom Oram
