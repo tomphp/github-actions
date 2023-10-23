@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.3.0](https://github.com/tomphp/github-actions/compare/v0.2.0..v0.3.0) - 2023-10-23
+#### Features
+- **(determine-binary-name)** Add determine-binary-name - ([63aed69](https://github.com/tomphp/github-actions/commit/63aed695440fa63fe8d6a03432c237d63bcac6ad)) - Tom Oram
+
+- - -
+
 ## [v0.2.0](https://github.com/tomphp/github-actions/compare/v0.1.0..v0.2.0) - 2023-10-23
 #### Features
 - **(checkout-rust-project)** Add checkout-rust-project - ([a707276](https://github.com/tomphp/github-actions/commit/a707276d6f5249ab8e95164fe525263c8bcf36f5)) - Tom Oram
