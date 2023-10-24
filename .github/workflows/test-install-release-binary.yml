@@ -15,27 +15,26 @@ jobs:
       - uses: ./install-release-binary
         id: run-action
         with:
-          binary-name: specdown
-          owner: specdown
-          repository: specdown
-      - run: specdown --version
+          binary-name: versioned-files
+          owner: tomphp
+          repository: versioned-files
+      - run: versioned-files --version
 
-  # TODO fix this (there is an error in the specdown pipeline)
-  # test-with-version:
-  #   strategy:
-  #     matrix:
-  #       os:
-  #         - ubuntu-latest
-  #         - windows-latest
-  #         - macos-latest
-  #   runs-on: ${{ matrix.os }}
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - uses: ./install-release-binary
-  #       id: run-action
-  #       with:
-  #         binary-name: specdown
-  #         owner: specdown
-  #         repository: specdown
-  #         version: "1.2.85"
-  #     - run: specdown --version | grep 1.2.85
+  test-with-version:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./install-release-binary
+        id: run-action
+        with:
+          binary-name: versioned-files
+          owner: tomphp
+          repository: versioned-files
+          version: "0.2.2"
+      - run: versioned-files --version | grep 0.2.2
