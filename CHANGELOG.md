@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.5.4](https://github.com/tomphp/github-actions/compare/v0.5.3..v0.5.4) - 2024-02-26
+#### Bug Fixes
+- **(deps)** bump armakuni/github-actions from 0.19.1 to 0.19.3 - ([c9cbe4c](https://github.com/tomphp/github-actions/commit/c9cbe4cbeb89ddf3b1edcc04047d7c9a0af5f983)) - dependabot[bot]
+
+- - -
+
 ## [v0.5.3](https://github.com/tomphp/github-actions/compare/v0.5.2..v0.5.3) - 2023-11-15
 #### Bug Fixes
 - **(deps)** bump armakuni/github-actions from 0.19.0 to 0.19.1 - ([c94741c](https://github.com/tomphp/github-actions/commit/c94741cd67eea919c2d3d923eebfb63f9fb14ed5)) - dependabot[bot]
