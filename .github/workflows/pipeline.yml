@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   check-conventional-commits:
-    uses: armakuni/github-actions/.github/workflows/check-conventional-commits.yml@v0.19.3
+    uses: armakuni/github-actions/.github/workflows/check-conventional-commits.yml@v0.19.4
 
   test-checkout-rust-project:
     uses: ./.github/workflows/test-checkout-rust-project.yml
@@ -37,4 +37,4 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - all-tests-succeeded
-    uses: armakuni/github-actions/.github/workflows/tag-and-release.yml@v0.19.3
+    uses: armakuni/github-actions/.github/workflows/tag-and-release.yml@v0.19.4
