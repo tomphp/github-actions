@@ -25,17 +25,17 @@ jobs:
         id: run-action
         with:
           name: my-binary
-      - uses: armakuni/github-actions/assert-equals@v0.19.4
+      - uses: armakuni/github-actions/assert-equals@v0.19.5
         name: Check name
         with:
           expected: ${{ matrix.os.expected-name }}
           actual: ${{ steps.run-action.outputs.name }}
-      - uses: armakuni/github-actions/assert-equals@v0.19.4
+      - uses: armakuni/github-actions/assert-equals@v0.19.5
         name: Check name-with-arch
         with:
           expected: ${{ matrix.os.expected-name-with-arch }}
           actual: ${{ steps.run-action.outputs.name-with-arch }}
-      - uses: armakuni/github-actions/assert-equals@v0.19.4
+      - uses: armakuni/github-actions/assert-equals@v0.19.5
         name: Check suffix
         with:
           expected: ${{ matrix.os.expected-suffix }}
@@ -68,17 +68,17 @@ jobs:
           linux-suffix: linux
           windows-suffix: windows
           macos-suffix: macos
-      - uses: armakuni/github-actions/assert-equals@v0.19.4
+      - uses: armakuni/github-actions/assert-equals@v0.19.5
         name: Check name
         with:
           expected: ${{ matrix.os.expected-name }}
           actual: ${{ steps.run-action.outputs.name }}
-      - uses: armakuni/github-actions/assert-equals@v0.19.4
+      - uses: armakuni/github-actions/assert-equals@v0.19.5
         name: Check name-with-arch
         with:
           expected: ${{ matrix.os.expected-name-with-arch }}
           actual: ${{ steps.run-action.outputs.name-with-arch }}
-      - uses: armakuni/github-actions/assert-equals@v0.19.4
+      - uses: armakuni/github-actions/assert-equals@v0.19.5
         name: Check suffix
         with:
           expected: ${{ matrix.os.expected-suffix }}
