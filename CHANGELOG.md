@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.5.9](https://github.com/tomphp/github-actions/compare/v0.5.8..v0.5.9) - 2026-05-13
+#### Bug Fixes
+- **(deps)** bump armakuni/github-actions from 0.19.6 to 0.19.14 - ([76dd3c5](https://github.com/tomphp/github-actions/commit/76dd3c59d1857df7b55149161aa952c664b8da1d)) - dependabot[bot]
+- **(deps)** bump armakuni/github-actions/.github/workflows/check-conventional-commits.yml - ([966c814](https://github.com/tomphp/github-actions/commit/966c814a55a235b4a1d0f6fd7bd5906f82dacdf6)) - dependabot[bot]
+- **(deps)** bump armakuni/github-actions/.github/workflows/tag-and-release.yml - ([c8b3334](https://github.com/tomphp/github-actions/commit/c8b333446fba004dadd5885da52e10bc1e925769)) - dependabot[bot]
+- **(deps)** bump actions/checkout from 4 to 6 - ([e014eda](https://github.com/tomphp/github-actions/commit/e014edad282180776cd60012087c67845b1e93ab)) - dependabot[bot]
+
+- - -
+
 ## [v0.5.8](https://github.com/tomphp/github-actions/compare/v0.5.7..v0.5.8) - 2026-05-13
 #### Bug Fixes
 - **(deps)** replace deprecated actions to fix CI - ([eb710f7](https://github.com/tomphp/github-actions/commit/eb710f7c65114ac2e8105649cbee93e8673e3a5d)) - Tom Oram
