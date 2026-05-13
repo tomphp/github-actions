@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.5.8](https://github.com/tomphp/github-actions/compare/v0.5.7..v0.5.8) - 2026-05-13
+#### Bug Fixes
+- **(deps)** replace deprecated actions to fix CI - ([eb710f7](https://github.com/tomphp/github-actions/commit/eb710f7c65114ac2e8105649cbee93e8673e3a5d)) - Tom Oram
+#### Continuous Integration
+- **(mergify)** upgrade configuration to current format - ([adb62a9](https://github.com/tomphp/github-actions/commit/adb62a983dc7c0ae04a55d0e8ac08b16dac12734)) - Mergify
+
+- - -
+
 ## [v0.5.7](https://github.com/tomphp/github-actions/compare/v0.5.6..v0.5.7) - 2025-02-26
 #### Bug Fixes
 - **(deps)** bump armakuni/github-actions from 0.19.5 to 0.19.6 - ([e385def](https://github.com/tomphp/github-actions/commit/e385defa636e2021cb9f69906535110fba6c4ba9)) - dependabot[bot]
