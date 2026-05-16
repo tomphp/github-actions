@@ -14,10 +14,14 @@ jobs:
             expected-name: my-binary.exe
             expected-name-with-arch: my-binary-x86_64-pc-windows-msvc.exe
             expected-suffix: x86_64-pc-windows-msvc
-          - image: macos-latest
+          - image: macos-26-intel
             expected-name: my-binary
             expected-name-with-arch: my-binary-x86_64-apple-darwin
             expected-suffix: x86_64-apple-darwin
+          - image: macos-26
+            expected-name: my-binary
+            expected-name-with-arch: my-binary-aarch64-apple-darwin
+            expected-suffix: aarch64-apple-darwin
     runs-on: ${{ matrix.os.image }}
     steps:
       - uses: actions/checkout@v6
@@ -54,10 +58,14 @@ jobs:
             expected-name: program.exe
             expected-name-with-arch: program-windows.exe
             expected-suffix: windows
-          - image: macos-latest
+          - image: macos-26-intel
             expected-name: program
             expected-name-with-arch: program-macos
             expected-suffix: macos
+          - image: macos-26
+            expected-name: program
+            expected-name-with-arch: program-macos-arm
+            expected-suffix: macos-arm
     runs-on: ${{ matrix.os.image }}
     steps:
       - uses: actions/checkout@v6
@@ -68,6 +76,7 @@ jobs:
           linux-suffix: linux
           windows-suffix: windows
           macos-suffix: macos
+          macos-arm-suffix: macos-arm
       - uses: armakuni/github-actions/assert-equals@v0.19.14
         name: Check name
         with:

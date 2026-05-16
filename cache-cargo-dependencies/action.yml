@@ -4,7 +4,7 @@ description: A simple wrapper around actions/cache configured with common Cargo 
 runs:
   using: composite
   steps:
-    - uses: actions/cache@v4
+    - uses: actions/cache@v5
       name: Cache cargo dependencies
       with:
         key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
