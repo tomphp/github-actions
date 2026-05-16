@@ -10,8 +10,10 @@ jobs:
             expected-url: https://github.com/example-org/example-app/releases/latest/download/my-binary-x86_64-unknown-linux-gnu
           - image: windows-latest
             expected-url: https://github.com/example-org/example-app/releases/latest/download/my-binary-x86_64-pc-windows-msvc.exe
-          - image: macos-latest
+          - image: macos-26-intel
             expected-url: https://github.com/example-org/example-app/releases/latest/download/my-binary-x86_64-apple-darwin
+          - image: macos-26
+            expected-url: https://github.com/example-org/example-app/releases/latest/download/my-binary-aarch64-apple-darwin
     runs-on: ${{ matrix.os.image }}
     steps:
       - uses: actions/checkout@v6
@@ -35,8 +37,10 @@ jobs:
             expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-linux
           - image: windows-latest
             expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-windows.exe
-          - image: macos-latest
+          - image: macos-26-intel
             expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-macos
+          - image: macos-26
+            expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-macos-arm
     runs-on: ${{ matrix.os.image }}
     steps:
       - uses: actions/checkout@v6
@@ -49,6 +53,7 @@ jobs:
           linux-suffix: linux
           windows-suffix: windows
           macos-suffix: macos
+          macos-arm-suffix: macos-arm
       - uses: armakuni/github-actions/assert-equals@v0.19.14
         name: Check url
         with:
