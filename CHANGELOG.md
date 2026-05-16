@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.7.0](https://github.com/tomphp/github-actions/compare/v0.6.0..v0.7.0) - 2026-05-16
+#### Features
+- add macos arm to install-release-binary - ([f41cb0d](https://github.com/tomphp/github-actions/commit/f41cb0db58c2679ce487888e681132110bc655dc)) - Tom Oram
+- add macos arm to determine-release-url - ([93b64b4](https://github.com/tomphp/github-actions/commit/93b64b44d41b3337fd50541e74a4f2aacad0d7c6)) - Tom Oram
+
+- - -
+
 ## [v0.6.0](https://github.com/tomphp/github-actions/compare/v0.5.9..v0.6.0) - 2026-05-16
 #### Bug Fixes
 - bump cache action version - ([437b02c](https://github.com/tomphp/github-actions/commit/437b02c8b77266e099ea871740c4a62c3983280c)) - Tom Oram
