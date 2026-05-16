@@ -20,9 +20,13 @@ inputs:
     required: false
     default: x86_64-unknown-linux-gnu
   macos-suffix:
-    description: The suffix to add to Linux binaries
+    description: The suffix to add to macOS binaries
     required: false
     default: x86_64-apple-darwin
+  macos-arm-suffix:
+    description: The suffix to add to macOS ARM binaries
+    required: false
+    default: aarch64-apple-darwin
   version:
     description: The required release version
     required: false
@@ -33,16 +37,17 @@ runs:
   steps:
     - name: Determin Binary Name
       id: get-binary-name
-      uses: tomphp/github-actions/determine-binary-name@v0.4.1
+      uses: tomphp/github-actions/determine-binary-name@v0.6.0
       with:
         name: ${{ inputs.binary-name }}
         windows-suffix: ${{ inputs.windows-suffix }}
         linux-suffix: ${{ inputs.linux-suffix }}
         macos-suffix: ${{ inputs.macos-suffix }}
+        macos-arm-suffix: ${{ inputs.macos-arm-suffix }}
 
     - name: Determine Release URL
       id: get-release-url
-      uses: tomphp/github-actions/determine-release-url@v0.4.1
+      uses: tomphp/github-actions/determine-release-url@v0.6.0
       with:
         owner: ${{ inputs.owner }}
         repository: ${{ inputs.repository }}
@@ -51,6 +56,7 @@ runs:
         windows-suffix: ${{ inputs.windows-suffix }}
         linux-suffix: ${{ inputs.linux-suffix }}
         macos-suffix: ${{ inputs.macos-suffix }}
+        macos-arm-suffix: ${{ inputs.macos-arm-suffix }}
 
     - name: Install Binary
       id: install
