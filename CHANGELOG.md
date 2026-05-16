@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.6.0](https://github.com/tomphp/github-actions/compare/v0.5.9..v0.6.0) - 2026-05-16
+#### Bug Fixes
+- bump cache action version - ([437b02c](https://github.com/tomphp/github-actions/commit/437b02c8b77266e099ea871740c4a62c3983280c)) - Tom Oram
+#### Features
+- add macos arm to determine-binary-name - ([00bb723](https://github.com/tomphp/github-actions/commit/00bb7231f2aaf9808d7c832e6e1b3072da6ba41c)) - Tom Oram
+
+- - -
+
 ## [v0.5.9](https://github.com/tomphp/github-actions/compare/v0.5.8..v0.5.9) - 2026-05-13
 #### Bug Fixes
 - **(deps)** bump armakuni/github-actions from 0.19.6 to 0.19.14 - ([76dd3c5](https://github.com/tomphp/github-actions/commit/76dd3c59d1857df7b55149161aa952c664b8da1d)) - dependabot[bot]
