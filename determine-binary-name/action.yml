@@ -14,9 +14,13 @@ inputs:
     required: false
     default: x86_64-unknown-linux-gnu
   macos-suffix:
-    description: The suffix to add to Linux binaries
+    description: The suffix to add to macOS binaries
     required: false
     default: x86_64-apple-darwin
+  macos-arm-suffix:
+    description: The suffix to add to macOS ARM binaries
+    required: false
+    default: aarch64-apple-darwin
 
 outputs:
   name:
@@ -39,8 +43,11 @@ runs:
         WINDOWS_SUFFIX: ${{ inputs.windows-suffix }}
         LINUX_SUFFIX: ${{ inputs.linux-suffix }}
         MACOS_SUFFIX: ${{ inputs.macos-suffix }}
+        MACOS_ARM_SUFFIX: ${{ inputs.macos-arm-suffix }}
       run: |
         set -euo pipefail
+
+        echo "RUNNER_OS=$RUNNER_OS"
 
         if [ "$RUNNER_OS" == "Linux" ]; then
           suffix="$LINUX_SUFFIX"
@@ -51,7 +58,12 @@ runs:
           target_file="$FILENAME.exe"
           source_file="$FILENAME-$suffix.exe"
         elif [ "$RUNNER_OS" == "macOS" ]; then
-          suffix="$MACOS_SUFFIX"
+          echo "\$(uname -m)=$(uname -m)"
+          if [ "$(uname -m)" == "arm64" ]; then
+            suffix="$MACOS_ARM_SUFFIX"
+          else
+            suffix="$MACOS_SUFFIX"
+          fi
           target_file="$FILENAME"
           source_file="$FILENAME-$suffix"
         else
@@ -59,7 +71,12 @@ runs:
           exit 1
         fi
         
+        echo "name-with-arch=$source_file"
         echo "name-with-arch=$source_file" >> "$GITHUB_OUTPUT"
+
+        echo "name=$target_file"
         echo "name=$target_file" >> "$GITHUB_OUTPUT"
+
+        echo "suffix=$suffix"
         echo "suffix=$suffix" >> "$GITHUB_OUTPUT"
       shell: bash
