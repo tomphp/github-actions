@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.7.1](https://github.com/tomphp/github-actions/compare/v0.7.0..v0.7.1) - 2026-05-19
+#### Bug Fixes
+- fix cache action path in checkout-rust-project - ([8af7dd9](https://github.com/tomphp/github-actions/commit/8af7dd99567eb82480c28a311dd3e5f8cc9d1b35)) - Tom Oram
+
+- - -
+
 ## [v0.7.0](https://github.com/tomphp/github-actions/compare/v0.6.0..v0.7.0) - 2026-05-16
 #### Features
 - add macos arm to install-release-binary - ([f41cb0d](https://github.com/tomphp/github-actions/commit/f41cb0db58c2679ce487888e681132110bc655dc)) - Tom Oram
