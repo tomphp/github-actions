@@ -10,6 +10,10 @@ jobs:
             expected-name: my-binary
             expected-name-with-arch: my-binary-x86_64-unknown-linux-gnu
             expected-suffix: x86_64-unknown-linux-gnu
+          - image: ubuntu-24.04-arm
+            expected-name: my-binary
+            expected-name-with-arch: my-binary-aarch64-unknown-linux-gnu
+            expected-suffix: aarch64-unknown-linux-gnu
           - image: windows-latest
             expected-name: my-binary.exe
             expected-name-with-arch: my-binary-x86_64-pc-windows-msvc.exe
@@ -54,6 +58,10 @@ jobs:
             expected-name: program
             expected-name-with-arch: program-linux
             expected-suffix: linux
+          - image: ubuntu-24.04-arm
+            expected-name: program
+            expected-name-with-arch: program-linux-arm
+            expected-suffix: linux-arm
           - image: windows-latest
             expected-name: program.exe
             expected-name-with-arch: program-windows.exe
@@ -74,6 +82,7 @@ jobs:
         with:
           name: program
           linux-suffix: linux
+          linux-arm-suffix: linux-arm
           windows-suffix: windows
           macos-suffix: macos
           macos-arm-suffix: macos-arm

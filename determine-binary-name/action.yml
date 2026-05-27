@@ -21,6 +21,10 @@ inputs:
     description: The suffix to add to macOS ARM binaries
     required: false
     default: aarch64-apple-darwin
+  linux-arm-suffix:
+    description: The suffix to add to Linux ARM binaries
+    required: false
+    default: aarch64-unknown-linux-gnu
 
 outputs:
   name:
@@ -44,13 +48,19 @@ runs:
         LINUX_SUFFIX: ${{ inputs.linux-suffix }}
         MACOS_SUFFIX: ${{ inputs.macos-suffix }}
         MACOS_ARM_SUFFIX: ${{ inputs.macos-arm-suffix }}
+        LINUX_ARM_SUFFIX: ${{ inputs.linux-arm-suffix }}
       run: |
         set -euo pipefail
 
         echo "RUNNER_OS=$RUNNER_OS"
 
         if [ "$RUNNER_OS" == "Linux" ]; then
-          suffix="$LINUX_SUFFIX"
+          echo "$(uname -m)=$(uname -m)"
+          if [ "$(uname -m)" == "aarch64" ]; then
+            suffix="$LINUX_ARM_SUFFIX"
+          else
+            suffix="$LINUX_SUFFIX"
+          fi
           target_file="$FILENAME"
           source_file="$FILENAME-$suffix"
         elif [ "$RUNNER_OS" == "Windows" ]; then
