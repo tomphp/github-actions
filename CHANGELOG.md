@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.8.0](https://github.com/tomphp/github-actions/compare/v0.7.1..v0.8.0) - 2026-05-27
+#### Features
+- add ARM support for linux - ([467544c](https://github.com/tomphp/github-actions/commit/467544ca3aa10121a50c04233102983c3ebf48cb)) - Tom Oram
+
+- - -
+
 ## [v0.7.1](https://github.com/tomphp/github-actions/compare/v0.7.0..v0.7.1) - 2026-05-19
 #### Bug Fixes
 - fix cache action path in checkout-rust-project - ([8af7dd9](https://github.com/tomphp/github-actions/commit/8af7dd99567eb82480c28a311dd3e5f8cc9d1b35)) - Tom Oram
