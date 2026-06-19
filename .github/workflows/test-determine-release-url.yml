@@ -23,7 +23,7 @@ jobs:
           binary-name: my-binary
           owner: example-org
           repository: example-app
-      - uses: armakuni/github-actions/assert-equals@v0.19.14
+      - uses: armakuni/github-actions/assert-equals@v0.19.15
         name: Check url
         with:
           expected: ${{ matrix.os.expected-url }}
@@ -54,7 +54,7 @@ jobs:
           windows-suffix: windows
           macos-suffix: macos
           macos-arm-suffix: macos-arm
-      - uses: armakuni/github-actions/assert-equals@v0.19.14
+      - uses: armakuni/github-actions/assert-equals@v0.19.15
         name: Check url
         with:
           expected: ${{ matrix.os.expected-url }}
