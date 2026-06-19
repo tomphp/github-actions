@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.8.1](https://github.com/tomphp/github-actions/compare/v0.8.0..v0.8.1) - 2026-06-19
+#### Bug Fixes
+- **(deps)** bump armakuni/github-actions/.github/workflows/tag-and-release.yml - ([33d0c88](https://github.com/tomphp/github-actions/commit/33d0c88cef48b8edc363759dc65092a5c0608f3b)) - dependabot[bot]
+- **(deps)** bump armakuni/github-actions/.github/workflows/check-conventional-commits.yml - ([2f8245b](https://github.com/tomphp/github-actions/commit/2f8245b8620f13971ec90b7e7c7f57cda384f0eb)) - dependabot[bot]
+- **(deps)** bump armakuni/github-actions from 0.19.14 to 0.19.15 - ([d22eef2](https://github.com/tomphp/github-actions/commit/d22eef2fd09b8f4089cf99be627a0d280b35c2a8)) - dependabot[bot]
+- **(deps)** bump actions/checkout from 6 to 7 - ([d542a1e](https://github.com/tomphp/github-actions/commit/d542a1e13848f3986227a2a5cc0061100bcb5870)) - dependabot[bot]
+
+- - -
+
 ## [v0.8.0](https://github.com/tomphp/github-actions/compare/v0.7.1..v0.8.0) - 2026-05-27
 #### Features
 - add ARM support for linux - ([467544c](https://github.com/tomphp/github-actions/commit/467544ca3aa10121a50c04233102983c3ebf48cb)) - Tom Oram
