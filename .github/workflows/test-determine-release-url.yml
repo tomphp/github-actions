@@ -16,7 +16,7 @@ jobs:
             expected-url: https://github.com/example-org/example-app/releases/latest/download/my-binary-aarch64-apple-darwin
     runs-on: ${{ matrix.os.image }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./determine-release-url
         id: run-action
         with:
@@ -43,7 +43,7 @@ jobs:
             expected-url: https://github.com/demo-org/demo-app/releases/latest/download/program-macos-arm
     runs-on: ${{ matrix.os.image }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./determine-release-url
         id: run-action
         with:

@@ -28,7 +28,7 @@ jobs:
             expected-suffix: aarch64-apple-darwin
     runs-on: ${{ matrix.os.image }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./determine-binary-name
         id: run-action
         with:
@@ -76,7 +76,7 @@ jobs:
             expected-suffix: macos-arm
     runs-on: ${{ matrix.os.image }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: ./determine-binary-name
         id: run-action
         with:
