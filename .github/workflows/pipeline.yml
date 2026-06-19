@@ -37,4 +37,4 @@ jobs:
     if: github.ref == 'refs/heads/main'
     needs:
       - all-tests-succeeded
-    uses: armakuni/github-actions/.github/workflows/tag-and-release.yml@v0.19.14
+    uses: armakuni/github-actions/.github/workflows/tag-and-release.yml@v0.19.15
