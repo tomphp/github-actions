@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.8.3](https://github.com/tomphp/github-actions/compare/v0.8.2..v0.8.3) - 2026-07-09
+#### Bug Fixes
+- bump cache action in checkout-rust-project - ([883b28e](https://github.com/tomphp/github-actions/commit/883b28e290afbf9526877b99992327e67045e88a)) - Tom Oram
+
+- - -
+
 ## [v0.8.2](https://github.com/tomphp/github-actions/compare/v0.8.1..v0.8.2) - 2026-07-09
 #### Bug Fixes
 - multi arch cargo cache - ([2631e98](https://github.com/tomphp/github-actions/commit/2631e989d0acfec96241c4d9e9c037f5b6eb76c5)) - Tom Oram
