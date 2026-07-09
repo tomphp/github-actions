@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## [v0.8.2](https://github.com/tomphp/github-actions/compare/v0.8.1..v0.8.2) - 2026-07-09
+#### Bug Fixes
+- multi arch cargo cache - ([2631e98](https://github.com/tomphp/github-actions/commit/2631e989d0acfec96241c4d9e9c037f5b6eb76c5)) - Tom Oram
+
+- - -
+
 ## [v0.8.1](https://github.com/tomphp/github-actions/compare/v0.8.0..v0.8.1) - 2026-06-19
 #### Bug Fixes
 - **(deps)** bump armakuni/github-actions/.github/workflows/tag-and-release.yml - ([33d0c88](https://github.com/tomphp/github-actions/commit/33d0c88cef48b8edc363759dc65092a5c0608f3b)) - dependabot[bot]
